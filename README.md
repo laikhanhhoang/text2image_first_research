@@ -1,1 +1,0 @@
-# text2image_first_research
