@@ -214,7 +214,7 @@ class AttendAndExcitePipeline(StableDiffusionPipeline):
         for i in indices_to_alter:
             image = attention_for_text[:, :, i]
             if smooth_attentions:
-                smoothing = GaussianSmoothing(channels=1, kernel_size=kernel_size, sigma=sigma, dim=2).cuda()
+                smoothing = GaussianSmoothing(channels=1, kernel_size=kernel_size, sigma=sigma, dim=2)
                 input = F.pad(image.unsqueeze(0).unsqueeze(0), (1, 1, 1, 1), mode='reflect')
                 image = smoothing(input).squeeze(0).squeeze(0)
             max_indices_list.append(image.max())
